@@ -9,4 +9,8 @@ urlpatterns = [
     path('myAccount/', views.myAccount, name='myAccount'),
     path('custDashboard/', views.custDashboard, name='custDashboard'),
     path('vendorDashboard/', views.vendorDashboard, name='vendorDashboard'), 
+    path('activate/<uidb64>/<token>', views.activate, name='activate'),
+    path('forgot_password/', views.forgotPassword, name='forgot_password'),
+    path('reset_password_validate/<uidb64>/token', views.resetPasswordValidate, name='reset_password_validate'),
+    path('reset_password/', views.resetPassword, name='reset_password'), 
 ]
