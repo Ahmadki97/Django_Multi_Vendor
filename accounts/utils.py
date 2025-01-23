@@ -34,4 +34,17 @@ def sendVerificaionEmail(request, user, email_subject, email_template):
     mail.send()
 
 
+def sendNotificationMail(mail_subject, mail_template, context):
+    try:
+        from_email = config('DEFAULT_FROM_EMAIL')
+        mail_subject = mail_subject
+        message = render_to_string(template_name=mail_template, context=context)
+        to_email = context['user'].email
+        mail = EmailMessage(subject=mail_subject, body=message, to=[to_email], from_email=from_email)
+        mail.send()
+        print(f'Mail sent Successfully..')
+    except Exception as err:
+        print(f"Error sending mail: {err}")
+
+
 
